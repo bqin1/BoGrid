@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class App 
 {
-	private static final String FILENAME = "src\\testgrid.txt";
 	private static ArrayList<Actor> Actors;
+	private static String filename;
 	private static int gridwidth;
 	private static int gridheight;
 	private static int numframes;
     
     public static void main( String[] args )
     {
-    	readText();
     	readInput(); 
+    	readText();
     	
     	Grid g = new Grid(gridwidth, gridheight, numframes, Actors);
     	g.runFrame();
@@ -30,7 +30,7 @@ public class App
         FileReader fr = null;
         
         try {
-     	   fr = new FileReader(FILENAME);
+     	   fr = new FileReader("src\\\\"+filename);
      	   br = new BufferedReader(fr);
      	   
      	   String line;
@@ -94,6 +94,8 @@ public class App
     {
         try{
             Scanner reader = new Scanner(System.in);
+            System.out.println("Please enter the filename, and make sure it is in src folder and ends with .txt: ");
+            filename = reader.next();
      	    System.out.println("Please enter the width of grid: ");
             gridwidth = reader.nextInt();
             System.out.println("Please enter the height of grid: ");
